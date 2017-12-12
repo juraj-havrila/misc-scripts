@@ -1,6 +1,6 @@
 #!/bin/bash
 #Script for faking the RCS check-in ...
-#Juraj Havrila, 12.12.2017, based on script from Alex Neufeld (23.7.2015, WT-1015)
+#Juraj Havrila, 12.12.2017, based on not working script from A.Neufeld (23.7.2015)
 
 #for file in `cat /tmp/juraj/check.the.shit/shit.list | grep "not checked in" | sed 's#^Error: ##g' | sed 's# not checked in$##g'` ; do
 for file in `cat /var/log/vicCheck | grep "not checked in" | sed 's#^Error: ##g' | sed 's# not checked in$##g'` ; do
