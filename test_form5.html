@@ -1,0 +1,53 @@
+<?php
+
+?>
+
+
+
+
+
+
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="notepad">
+  <TITLE>Eberspächer Warranty Claim Form</TITLE>
+</HEAD>
+
+<BODY>
+    <TR>
+        <TD colspan=6 align=center><FONT COLOR=red>*</FONT>Application:
+
+
+
+
+            <input type="radio" name="application_type" value="Truck" onclick="javascript:applicationTypeCheck();" onChange="checkTravelTime()">Truck
+            <input type="radio" name="application_type" value="Marine" onclick="javascript:applicationTypeCheck();" onChange="checkTravelTime()">Marine
+            <input type="radio" oname="application_type" value="Off-Highway" onclick="javascript:applicationTypeCheck();" onChange="checkTravelTime()">Off-Highway
+            <input type="radio" name="application_type" value="Automotive" onclick="javascript:applicationTypeCheck();" onChange="checkTravelTime()">Automotive
+            <input type="radio" name="application_type" value="RV/Cargo" onclick="javascript:applicationTypeCheck();" onChange="checkTravelTime()">RV/Cargo
+            <input type="radio" name="application_type" value="Bus" onclick="javascript:applicationTypeCheck();" onChange="checkTravelTime()">Bus
+            <input type="radio" name="application_type" id="otherCheck" value="Other" onclick="javascript:applicationTypeCheck();" onChange="checkTravelTime()"> Other
+            <input type="text" id="please_specify" name="application_type" style="display:none" size="25" maxlength="90">
+
+        </TD>
+    </TR>
+
+
+<script type="text/javascript">
+
+function applicationTypeCheck() {
+    if (document.getElementById('otherCheck').checked) {
+        document.getElementById('please_specify').style.display = 'inline';
+    } else {
+        document.getElementById('please_specify').style.display = 'none';
+    }
+}
+</script>
+
+
+
+
+
+
+</BODY>
+</HTML>
