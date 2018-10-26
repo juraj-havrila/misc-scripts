@@ -1,0 +1,73 @@
+<server>
+    <hostname>S010A66MEZ49</hostname>
+    <nic>
+         <AdapterName>S010A66MEZ49</AdapterName>
+         <AdapterDescription> </AdapterDescription>
+         <RSSEnabled> </RSSEnabled>
+         <MaxProcessors> </MaxProcessors>
+         </nic>
+
+         <nic>
+         <AdapterName>S010A66MEZ49A</AdapterName>
+         <AdapterDescription> </AdapterDescription>
+         <RSSEnabled> </RSSEnabled>
+         <MaxProcessors> </MaxProcessors>
+    </nic>
+    <cpu_cores>4</cpu_cores>
+    <host_memory>8192</host_memory>
+    <sql_memory>4096</sql_memory>
+    <sql_NumErrorLogs>10</sql_NumErrorLogs>
+    <net_release>461814</net_release>
+
+
+
+    <disk>
+        <DriveLetter>C:</DriveLetter>
+        <Label>System</Label>
+        <Capacity_GB>60</Capacity_GB>
+        <BlockSize_kB>4</BlockSize_kB>
+    </disk>
+    <disk>
+        <DriveLetter>D:</DriveLetter>
+        <Label>Applikation</Label>
+        <Capacity_GB>50</Capacity_GB>
+        <BlockSize_kB>64</BlockSize_kB>
+    </disk>
+    <disk>
+        <DriveLetter>E:</DriveLetter>
+        <Label>Daten</Label>
+        <Capacity_GB>30</Capacity_GB>
+        <BlockSize_kB>64</BlockSize_kB>
+    </disk>
+    <disk>
+        <DriveLetter>F:</DriveLetter>
+        <Label>Hilfssystem</Label>
+        <Capacity_GB>20</Capacity_GB>
+        <BlockSize_kB>64</BlockSize_kB>
+    </disk>
+    <disk>
+        <DriveLetter>G:</DriveLetter>
+        <Label>Zellsystem_TLog</Label>
+        <Capacity_GB>20</Capacity_GB>
+        <BlockSize_kB>64</BlockSize_kB>
+    </disk>
+   <disk>
+        <DriveLetter>H:</DriveLetter>
+        <Label>TempDB</Label>
+        <Capacity_GB>20</Capacity_GB>
+        <BlockSize_kB>64</BlockSize_kB>
+    </disk>
+
+
+
+    <host_admins>account_a account_b account_c </host_admins>
+    <sql_admins> </sql_admins>
+
+
+</server>
+
+
+
+
+
+
