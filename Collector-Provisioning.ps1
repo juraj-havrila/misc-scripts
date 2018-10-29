@@ -95,12 +95,13 @@ foreach ($member in $admin_list) {
 
 		}
 }
+######## Hotfix count
+$pom_hotfix=Get-Hotfix
+$my_hotfix_count=$pom_hotfix.count
+
 ########
 
-
-
-
-return $my_hostname, $my_net_release, $my_cpu_cores, $my_host_memory, $my_sql_memory, $my_sql_NumErrorLogs, $my_nic, $my_volumes, $my_host_admins, $my_sql_admins
+return $my_hostname, $my_net_release, $my_cpu_cores, $my_host_memory, $my_sql_memory, $my_sql_NumErrorLogs, $my_nic, $my_volumes, $my_host_admins, $my_sql_admins, $my_hotfix_count
 
 
 }

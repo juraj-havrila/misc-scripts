@@ -3,11 +3,11 @@
     <nic>
 <!--         <AdapterName>S010A66MEZ49A</AdapterName>	-->
          <AdapterCount>2</AdapterCount>
-         <AdapterDescription>vmxnet3</AdapterDescription>
+         <AdapterDescription>*vmxnet3*</AdapterDescription>
          <RSSEnabled>True</RSSEnabled>
          <MaxProcessors>4</MaxProcessors>
     </nic>
-    <cpu_cores>8</cpu_cores>
+    <cpu_cores>4</cpu_cores>
     <host_memory>8192</host_memory>
     <sql_memory>4096</sql_memory>
     <sql_NumErrorLogs>10</sql_NumErrorLogs>

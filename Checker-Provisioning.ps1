@@ -10,7 +10,7 @@ $should_hostname=''
 ($should_hostname, $should_net_release, $should_cpu_cores, $should_host_memory, $should_sql_memory, $should_sql_NumErrorLogs, $should_nic, $should_volumes, $should_host_admins, $should_sql_admins) = (Get-ProvisioningShouldValues $my_server)
 
 if ($should_hostname){
-. C:\DATA\scripts\PowerShell\validation\Collector-Provisioning.ps1; ($my_hostname, $my_net_release, $my_cpu_cores, $my_host_memory, $my_sql_memory, $my_sql_NumErrorLogs, $my_nic, $my_volumes, $my_host_admins, $my_sql_admins) = Invoke-Command -computername $my_server -Credential e010_a_jhavril -ScriptBlock ${function:Collector-Provisioning}
+. C:\DATA\scripts\PowerShell\validation\Collector-Provisioning.ps1; ($my_hostname, $my_net_release, $my_cpu_cores, $my_host_memory, $my_sql_memory, $my_sql_NumErrorLogs, $my_nic, $my_volumes, $my_host_admins, $my_sql_admins, $my_hotfix_count) = Invoke-Command -computername $my_server -Credential e010_a_jhavril -ScriptBlock ${function:Collector-Provisioning}
 
 
 
@@ -26,6 +26,8 @@ if ($should_sql_memory -eq $my_sql_memory) {Write-Host -ForegroundColor "Green" 
     else {Write-Host -ForegroundColor "Red" "NOK | SQL Memory: $my_sql_memory does not match required $should_sql_memory"}
 if ($should_sql_NumErrorLogs -eq $my_sql_NumErrorLogs) {Write-Host -ForegroundColor "Green" "OK  | Number of SQL Error Logs: $my_sql_NumErrorLogs"}
     else {Write-Host -ForegroundColor "Red" "NOK | Number of SQL Error Logs: $my_sql_NumErrorLogs does not match required $should_sql_NumErrorLogs"}
+if ($my_hotfix_count -ge 50) {Write-Host -ForegroundColor "Green" "OK  | Number of security Hotfixes installed: $my_hotfix_count"}
+    else {Write-Host -ForegroundColor "Red" "NOK | Number of security Hotfixes installed: $my_hotfix_count appears o be too low, please check if server is patched."}
 if ($should_net_release -eq $my_net_release) {Write-Host -ForegroundColor "Green" "OK  | .NET Release: $my_net_release"}
     else {Write-Host -ForegroundColor "Red" "NOK | .NET Release: $my_net_release does not match required $should_net_release"}
 
@@ -47,9 +49,19 @@ if ($should_drive.DriveLetter -like $is_drive.DriveLetter){
   }
 
 ####NIC Check
+$nic_count= $should_nic.AdapterCount
+if ($my_nic.count -ne $nic_count) {Write-Host -ForegroundColor "Red" "NOK | Network Card count "$my_nic.count "does not match the requitrement`("$nic_count" `)."}
 
+    foreach ($is_nic in $my_nic){
 
-
+  if (($is_nic.AdapterDescription -like $should_nic.AdapterDescription) -and ($is_nic.RSSEnabled -eq $should_nic.RSSEnabled) -and ($is_nic.MaxProcessors -eq $should_nic.MaxProcessors)) {
+    Write-Host -ForegroundColor "Green" "OK  | Network Card "$is_nic.AdapterName"is configurred corectly. RSS is enabled with Maximum of "$is_nic.MaxProcessors "CPUs."
+    }
+    else {
+        Write-Host -ForegroundColor "Red" "NOK | Network Card" $is_nic.AdapterName " is not correctly configurred. Check Adapter Description"$is_nic.AdapterDescription "RSS Enabled"$is_nic.RSSEnabled "with maximum of "$is_nic.MaxProcessors "CPUs."
+        }
+  }
+  
 ###
 
 
